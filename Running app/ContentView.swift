@@ -12,16 +12,24 @@ struct ContentView: View {
     @State private var enterDistanceTextField = ""
     var body: some View {
         VStack {
+            //Adds Title and images
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Running Calculator!")
+            Text("Running Calculator!").bold()
+            Spacer()
+            //Adds text to help the user
+            HStack {
+                Text("Enter time ran")
+                Spacer()
+                Text("Enter miles ran")
+            }
+            // This HStack has the text fields where the user enters how far they ran and how long
             HStack{
-                CustomTextField(placeholder: "Enter time ran", variable: $enterTimeTextField)
-                CustomTextField(placeholder: "Enter miles ran", variable: $enterDistanceTextField)
+                CustomTextField(placeholder: "00:00:00", variable: $enterTimeTextField)
+                CustomTextField(placeholder: "0", variable: $enterDistanceTextField)
             }
         }
-        
         .padding()
     }
 }
