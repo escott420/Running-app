@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var enterTimeTextField = ""
+    @State private var enterHoursTextField = ""
+    @State private var enterMinutesTextField = ""
+    @State private var enterSecondsTextField = ""
     @State private var enterDistanceTextField = ""
     @State private var totalMinutes = 0
     @State private var totalSeconds = 0
@@ -27,8 +29,10 @@ struct ContentView: View {
                 Text("Enter miles ran")
             }
             // This HStack has the text fields where the user enters how far they ran and how long
-            HStack{
-                CustomTextField(placeholder: "0", variable: $enterTimeTextField)
+            VStack{
+                CustomTextField(placeholder: "0", variable: $enterHoursTextField)
+                CustomTextField(placeholder: "0", variable: $enterMinutesTextField)
+                CustomTextField(placeholder: "0", variable: $enterSecondsTextField)
                 CustomTextField(placeholder: "0", variable: $enterDistanceTextField)
                 
             }
@@ -37,7 +41,7 @@ struct ContentView: View {
         
     }
     func calculateGrade(){
-        if let minutesRan = Double(enterTimeTextField){
+        if let HoursRan = Double(enterHoursTextField){
             if let distanceRan = Double(enterDistanceTextField){
                 
                 }
