@@ -22,18 +22,13 @@ struct ContentView: View {
                 .foregroundColor(.accentColor)
             Text("Running Calculator!").bold()
             Spacer()
-            //Adds text to help the user
-            HStack {
-                Text("Enter minutes ran")
-                Spacer()
-                Text("Enter miles ran")
-            }
+            
             // This HStack has the text fields where the user enters how far they ran and how long
             VStack{
-                CustomTextField(placeholder: "0", variable: $enterHoursTextField)
-                CustomTextField(placeholder: "0", variable: $enterMinutesTextField)
-                CustomTextField(placeholder: "0", variable: $enterSecondsTextField)
-                CustomTextField(placeholder: "0", variable: $enterDistanceTextField)
+                CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
+                CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
+                CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
+                CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
                 
             }
             
