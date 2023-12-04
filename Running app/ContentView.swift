@@ -21,7 +21,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Running Calculator!").bold()
-            Spacer()
+        
             
             // This HStack has the text fields where the user enters how far they ran and how long
             VStack{
@@ -31,15 +31,20 @@ struct ContentView: View {
                 CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
                 
             }
-            
+            Button("Calculate Pace!"){
+                calculatePace()
+            }
         }
-        
     }
-    func calculateGrade(){
+    func calculatePace(){
         if let HoursRan = Double(enterHoursTextField){
-            if let distanceRan = Double(enterDistanceTextField){
-                
+            if let MinutesRan = Double(enterMinutesTextField){
+                if let secondsRan = Double(enterSecondsTextField){
+                    if let distanceRan = Double(enterDistanceTextField){
+                        
+                    }
                 }
+            }
             }
         }
 }
