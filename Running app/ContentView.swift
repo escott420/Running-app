@@ -12,8 +12,9 @@ struct ContentView: View {
     @State private var enterMinutesTextField = ""
     @State private var enterSecondsTextField = ""
     @State private var enterDistanceTextField = ""
-    @State private var totalMinutes = 0
+    @State private var totalMinutes = 0.0
     @State private var totalSeconds = 0
+    @State private var pace = 0.0
     var body: some View {
         VStack {
             //Adds Title and images
@@ -31,21 +32,32 @@ struct ContentView: View {
                 CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
                 
             }
+            CustomText(text: String(format: "%.2f", pace))
             Button("Calculate Pace!"){
                 calculatePace()
             }
         }
     }
-    func calculatePace(){
+    func calculatePace() -> Double{
+        totalMinutes = 0.0
         if let HoursRan = Double(enterHoursTextField){
             if let MinutesRan = Double(enterMinutesTextField){
                 if let secondsRan = Double(enterSecondsTextField){
                     if let distanceRan = Double(enterDistanceTextField){
-                        
+                        if HoursRan > 0 {
+                            totalMinutes += HoursRan * 60
+                        }
+                         if MinutesRan > 0
+                        {
+                            totalMinutes += MinutesRan
+                        }
+                        totalMinutes += secondsRan/60
+                        pace =  Double(totalMinutes)/distanceRan
                     }
                 }
             }
             }
+        return pace
         }
 }
 
