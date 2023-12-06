@@ -15,6 +15,9 @@ struct ContentView: View {
     @State private var totalMinutes = 0.0
     @State private var totalSeconds = 0
     @State private var pace = 0.0
+    @State private var temp = 0.0
+    @State private var paceSeconds = 0.0
+    @State private var tempPace = 0.0
     var body: some View {
         VStack {
             //Adds Title and images
@@ -32,7 +35,7 @@ struct ContentView: View {
                 CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
                 
             }
-            CustomText(text: String(format: "%.2f", pace))
+            CustomText(text: String(format: "%.2f",  pace))
             Button("Calculate Pace!"){
                 calculatePace()
             }
@@ -52,7 +55,11 @@ struct ContentView: View {
                             totalMinutes += MinutesRan
                         }
                         totalMinutes += secondsRan/60
-                        pace =  Double(totalMinutes)/distanceRan
+                        tempPace = totalMinutes/distanceRan
+                        temp = tempPace - Double(Int(tempPace))
+                        paceSeconds = temp / (100/60)
+                        pace = Double(Int(tempPace)) + paceSeconds
+                        
                     }
                 }
             }
