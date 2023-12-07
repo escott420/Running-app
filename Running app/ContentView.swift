@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var finalSeconds = 0.0
     @State private var tempPace = 0.0
     @State private var finalMinutes = 0.0
-    @State private var imageName = ""
+    @State private var speedText = ""
     var body: some View {
         VStack {
             //Adds Title and images
@@ -39,8 +39,9 @@ struct ContentView: View {
             
             Button("Calculate Pace!"){
                 calculatePace()
-                imageName = "calculator"
             }
+            Spacer()
+            Text(speedText).bold()
             Spacer()
         }
     }
@@ -63,17 +64,28 @@ struct ContentView: View {
                         paceSeconds = temp / (100/60)
                         finalMinutes = Double(Int(tempPace))
                         finalSeconds = paceSeconds * 100
-                        imageName = "calculator"
-                        
-                      
-                        
-                        
+                       if (finalMinutes < 5)
+                        {
+                           speedText = "Wow thats fast!"
+                       }
+                        else if (finalMinutes < 7)
+                        {
+                            speedText = "Nice tempo!"
+                        }
+                        else if (finalMinutes < 20)
+                        {
+                            speedText = "Nice run!"
+                        }
+                        else {
+                            speedText = "Speed up!!"
+                        }
                     }
                 }
             }
             }
         return finalSeconds
         }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
