@@ -19,12 +19,12 @@ struct ContentView: View {
     @State private var finalSeconds = 0.0
     @State private var tempPace = 0.0
     @State private var finalMinutes = 0.0
+    @State private var imageName = ""
     var body: some View {
         VStack {
             //Adds Title and images
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
+            Image("calculator").resizable().frame(width: 150, height: 150)
+            
             Text("Running Calculator!").bold()
         
             
@@ -34,12 +34,14 @@ struct ContentView: View {
                 CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
                 CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
                 CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
-                
             }
             Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
+            
             Button("Calculate Pace!"){
                 calculatePace()
+                imageName = "calculator"
             }
+            Spacer()
         }
     }
     func calculatePace() -> Double{
@@ -61,6 +63,7 @@ struct ContentView: View {
                         paceSeconds = temp / (100/60)
                         finalMinutes = Double(Int(tempPace))
                         finalSeconds = paceSeconds * 100
+                        imageName = "calculator"
                         
                       
                         
