@@ -21,30 +21,38 @@ struct ContentView: View {
     @State private var finalMinutes = 0.0
     @State private var speedText = ""
     var body: some View {
-        VStack {
-            //Adds Title and images
-            Image("calculator").resizable().frame(width: 150, height: 150)
-            
-            Text("Running Calculator!").bold()
-        
-            
-            // This HStack has the text fields where the user enters how far they ran and how long
-            VStack{
-                CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
-                CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
-                CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
-                CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+        NavigationView{
+            VStack {
+                //Adds Title and images
+                Image("calculator").resizable().frame(width: 150, height: 150)
+                
+                Text("Running Calculator!").bold()
+                
+                
+                // This HStack has the text fields where the user enters how far they ran and how long
+                VStack{
+                    CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
+                    CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
+                    CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
+                    CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+                }
+                Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
+                
+                Button("Calculate Pace!"){
+                    calculatePace()
+                }
+                Spacer()
+                Text(speedText).bold()
+                Spacer()
+                NavigationLink("Learn how to train!", destination: TrainingView())
+                Spacer()
+                
             }
-            Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
-            
-            Button("Calculate Pace!"){
-                calculatePace()
-            }
-            Spacer()
-            Text(speedText).bold()
-            Spacer()
         }
     }
+    
+    
+    
     func calculatePace() -> Double{
         totalMinutes = 0.0
         if let HoursRan = Double(enterHoursTextField){
@@ -76,9 +84,6 @@ struct ContentView: View {
                         {
                             speedText = "Nice run!"
                         }
-                        else {
-                            speedText = "Speed up!!"
-                        }
                     }
                 }
             }
@@ -87,6 +92,21 @@ struct ContentView: View {
         }
     
 }
+
+
+struct TrainingView: View{
+    var body: some View {
+        VStack{
+            Image("stats").resizable().frame(width: 200, height: 150)
+            Text("Effective training for a 5K involves a gradual increase in running distance, incorporating interval training, strength exercises, and proper rest to build endurance and improve overall performance").bold()
+            
+                }
+                Spacer()
+            }
+        }
+    
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
