@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var tempPace = 0.0
     @State private var finalMinutes = 0.0
     @State private var speedText = ""
+    @State private var imageName = ""
     var body: some View {
         NavigationView{
             VStack {
@@ -42,7 +43,10 @@ struct ContentView: View {
                     calculatePace()
                 }
                 Spacer()
-                Text(speedText).bold()
+                HStack{
+                    Text(speedText).bold()
+                    Image(imageName).resizable().frame(width: 150, height: 150)
+                }
                 Spacer()
                 NavigationLink("Learn how to train!", destination: TrainingView())
                 Spacer()
@@ -75,14 +79,22 @@ struct ContentView: View {
                        if (finalMinutes < 5)
                         {
                            speedText = "Wow thats fast!"
+                           imageName = "cheetah"
                        }
                         else if (finalMinutes < 7)
                         {
                             speedText = "Nice tempo!"
+                            imageName = "gazelle"
                         }
-                        else if (finalMinutes < 20)
+                        else if (finalMinutes < 10)
                         {
                             speedText = "Nice run!"
+                            imageName = "dog"
+                        }
+                        else if (finalMinutes >= 10)
+                        {
+                            speedText = "Speed up!!"
+                            imageName = "snail1"
                         }
                     }
                 }
@@ -99,7 +111,13 @@ struct TrainingView: View{
         VStack{
             Image("stats").resizable().frame(width: 200, height: 150)
             Text("Effective training for a 5K involves a gradual increase in running distance, incorporating interval training, strength exercises, and proper rest to build endurance and improve overall performance").bold()
-            
+            Spacer()
+            Text("When first starting out to run, its import to slowly increase your weekly mileage")
+            Spacer()
+            Text("Its also important to incorporate a variety of fast running and slow running aswell as short runs and long runs")
+            Spacer()
+            Text("Some helpful tips for beginner can be: Have a good par of shoes, keep track of your milage, and take care of any soreness to prevent injuries")
+                
                 }
                 Spacer()
             }
