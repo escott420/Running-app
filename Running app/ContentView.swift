@@ -143,7 +143,7 @@ struct TrainingPlanView: View{
             VStack{
                 Button("Begginer runner"){
                    mondayText = "Easy run (2-3 miles)"
-                    tuesdayText = "Long run (5-6 miles"
+                    tuesdayText = "Long run (5-6 miles)"
                     wednessdayText = "Easy run (2-3 miles)"
                     thursdayText = "Rest day - go for a swim or bike ride!"
                     fridayText = "Fartleck - 6 x (1 minute fast, 2 minutes slow)"
@@ -152,10 +152,24 @@ struct TrainingPlanView: View{
                     weeklyMileage = 18
                 }
                 Button("Intermediate runner"){
-                   
+                    mondayText = "Long run (10-11 miles"
+                     tuesdayText = "Easy run (6-7 miles)"
+                     wednessdayText = "Fartleck - 8 x (2 minute fast, 1 minutes slow)"
+                     thursdayText = "Easy run (6-7 miles)"
+                     fridayText = "Thousands - 6 x 1k repeats"
+                     saturdayText = "Easy run (5 miles)"
+                     sundayText = "Rest day - go for a swim or bike ride!"
+                     weeklyMileage = 45
                 }
                 Button("Expert runner"){
-                    
+                    mondayText = "Long run (13-14 miles)"
+                     tuesdayText = "Easy run (8-9 miles)"
+                     wednessdayText = "Fartleck - 8 x (2 minute fast, 1 minutes slow) + 4 x (1 minute fast, 30 seconds slow)"
+                     thursdayText = "Easy run (6-7 miles)"
+                     fridayText = "thousands - 8 x 1k repeats + 4 x 600"
+                     saturdayText = "Easy run (7 miles)"
+                     sundayText = "10 miles easy + swim or bike"
+                     weeklyMileage = 67
                 }
                 Spacer()
                 VStack{
