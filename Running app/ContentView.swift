@@ -94,7 +94,7 @@ struct ContentView: View {
                         else if (finalMinutes >= 10)
                         {
                             speedText = "Speed up!!"
-                            imageName = "snail1"
+                            imageName = "snail"
                         }
                     }
                 }
