@@ -130,12 +130,15 @@ struct TrainingPlanView: View{
    @State private var trainingText = ""
     var body: some View {
         VStack{
-            Text("Selsect your prior experience:")
+            Text("Select your previous training experience:")
+            Spacer()
             HStack{
-                Button("begginer"){
+                Button("Begginer"){
                     trainingText = "j"
                 }
             }
+            Spacer()
+            Text(trainingText)
                 }
                 Spacer()
             }
