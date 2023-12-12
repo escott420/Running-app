@@ -114,9 +114,9 @@ struct TrainingView: View{
             Spacer()
             Text("When first starting out to run, its import to slowly increase your weekly mileage")
             Spacer()
-            Text("Its also important to incorporate a variety of fast running and slow running aswell as short runs and long runs")
+            Text("It's also important to incorporate a variety of fast running and slow running, aswell as short runs and long runs")
             Spacer()
-            Text("Some helpful tips for beginner can be: Have a good par of shoes, keep track of your milage, and take care of any soreness to prevent injuries")
+            Text("Some helpful tips for beginner can be: Have a good pair of shoes, keep track of your milage, and take care of any soreness to prevent injuries")
                 
                 }
                 Spacer()
