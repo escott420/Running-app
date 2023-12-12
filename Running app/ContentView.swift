@@ -149,8 +149,25 @@ struct TrainingPlanView: View{
                 Button("Expert runner"){
                     
                 }
-                Text("Monday").bold()
-                Text(mondayText)
+                Spacer()
+                VStack{
+                    Text("Monday:").bold()
+                    Text(mondayText)
+                    Text("Tuesday:").bold()
+                    Text(tuesdayText)
+                    Text("Wednessday:").bold()
+                    Text(wednessdayText)
+                    Text("Thursday:").bold()
+                    VStack{
+                        Text(thursdayText)
+                        Text("Friday:").bold()
+                        Text(fridayText)
+                        Text("Saturday:").bold()
+                        Text(saturdayText)
+                        Text("Sunday:").bold()
+                        Text(sundayText)
+                    }
+                }
             }
             Spacer()
             Text(mondayText)
