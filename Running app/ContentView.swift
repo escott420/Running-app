@@ -127,24 +127,33 @@ struct TrainingView: View{
         }
 
 struct TrainingPlanView: View{
-   @State private var trainingText = ""
+   
+    @State private var mondayText = ""
+    @State private var tuesdayText = ""
+    @State private var wednessdayText = ""
+    @State private var thursdayText = ""
+    @State private var fridayText = ""
+    @State private var saturdayText = ""
+    @State private var sundayText = ""
     var body: some View {
         VStack{
-            Text("Select your previous training experience:")
+            Text("Select your previous training experience:").bold()
             Spacer()
-            HStack{
+            VStack{
                 Button("Begginer runner"){
-                    trainingText = "j"
+                   
                 }
                 Button("Intermediate runner"){
-                    trainingText = "j"
+                   
                 }
                 Button("Expert runner"){
-                    trainingText = "j"
+                    
                 }
+                Text("Monday").bold()
+                Text(mondayText)
             }
             Spacer()
-            Text(trainingText)
+            Text(mondayText)
                 }
                 Spacer()
             }
