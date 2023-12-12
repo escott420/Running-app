@@ -24,34 +24,38 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                //Adds Title and images
-                Image("calculator").resizable().frame(width: 150, height: 150)
                 
-                Text("Running Calculator!").bold()
-                
-                
-                // This HStack has the text fields where the user enters how far they ran and how long
+                    //Adds Title and images
+                    Image("calculator").resizable().frame(width: 150, height: 150)
+                    
+                    Text("Running Calculator!").bold()
+                    
+                    
+                    // This HStack has the text fields where the user enters how far they ran and how long
+                    VStack{
+                        CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
+                        CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
+                        CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
+                        CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+                    }
+                    Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
+                    
+                    Button("Calculate Pace!"){
+                        calculatePace()
+                    }
+                    Spacer()
+                    HStack{
+                        Text(speedText).bold()
+                        Image(imageName).resizable().frame(width: 150, height: 150)
+                    }
+                    Spacer()
                 VStack{
-                    CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
-                    CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
-                    CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
-                    CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+                    NavigationLink("Learn how to train!", destination: TrainingView())
+                    Spacer()
+                    NavigationLink("Get a training Plan!", destination: TrainingPlanView())
                 }
-                Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
-                
-                Button("Calculate Pace!"){
-                    calculatePace()
-                }
-                Spacer()
-                HStack{
-                    Text(speedText).bold()
-                    Image(imageName).resizable().frame(width: 150, height: 150)
-                }
-                Spacer()
-                NavigationLink("Learn how to train!", destination: TrainingView())
-                Spacer()
-                
             }
+            
         }
     }
     
@@ -105,7 +109,6 @@ struct ContentView: View {
     
 }
 
-
 struct TrainingView: View{
     var body: some View {
         VStack{
@@ -122,7 +125,23 @@ struct TrainingView: View{
                 Spacer()
             }
         }
-    
+
+struct TrainingPlanView: View{
+   @State private var trainingText = ""
+    var body: some View {
+        VStack{
+            Text("Selsect your prior experience:")
+            HStack{
+                Button("begginer"){
+                    trainingText = "j"
+                }
+            }
+                }
+                Spacer()
+            }
+        }
+
+
 
 
 

@@ -4,11 +4,10 @@
 //
 //  Created by Ethan Scott on 11/28/23.
 //
-
 import SwiftUI
 
 @main
-struct Running_appApp: App {
+struct RunningApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
