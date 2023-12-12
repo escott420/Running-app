@@ -135,13 +135,21 @@ struct TrainingPlanView: View{
     @State private var fridayText = ""
     @State private var saturdayText = ""
     @State private var sundayText = ""
+    @State private var weeklyMileage = 0
     var body: some View {
         VStack{
             Text("Select your previous training experience:").bold()
             Spacer()
             VStack{
                 Button("Begginer runner"){
-                   
+                   mondayText = "Easy run (2-3 miles)"
+                    tuesdayText = "Long run (5-6 miles"
+                    wednessdayText = "Easy run (2-3 miles)"
+                    thursdayText = "Rest day - go for a swim or bike ride!"
+                    fridayText = "Fartleck - 6 x (1 minute fast, 2 minutes slow)"
+                    saturdayText = "Easy run (2-3 miles)"
+                    sundayText = "Rest day - go for a swim or bike ride!"
+                    weeklyMileage = 18
                 }
                 Button("Intermediate runner"){
                    
@@ -168,9 +176,11 @@ struct TrainingPlanView: View{
                         Text(sundayText)
                     }
                 }
+                Spacer()
+                Text("Total weekly mileage: " + String(weeklyMileage))
             }
             Spacer()
-            Text(mondayText)
+    
                 }
                 Spacer()
             }
