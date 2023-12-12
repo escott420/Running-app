@@ -133,7 +133,13 @@ struct TrainingPlanView: View{
             Text("Select your previous training experience:")
             Spacer()
             HStack{
-                Button("Begginer"){
+                Button("Begginer runner"){
+                    trainingText = "j"
+                }
+                Button("Intermediate runner"){
+                    trainingText = "j"
+                }
+                Button("Expert runner"){
                     trainingText = "j"
                 }
             }
