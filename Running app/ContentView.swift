@@ -8,23 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var enterNameTextField = ""
-    var body: some View {
-        NavigationView{
-            VStack{
-                CustomTextField(placeholder: "Enter hours ran", variable: $enterNameTextField)
-                NavigationLink("Go to calculator!", destination: HomeScreen())
-            }
-        }
-        
-    }
-    
-}
-    
-    
-
-
-struct HomeScreen: View{
     @State private var enterHoursTextField = ""
     @State private var enterMinutesTextField = ""
     @State private var enterSecondsTextField = ""
@@ -39,40 +22,55 @@ struct HomeScreen: View{
     @State private var speedText = ""
     @State private var imageName = ""
     var body: some View{
-        VStack {
-            //Adds Title and images
-            Image("calculator").resizable().frame(width: 150, height: 150)
-            Text(" Welcome to Running Calculator!").bold()
-            
-            // This HStack has the text fields where the user enters how far they ran and how long
-            VStack{
-                CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
-                CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
-                CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
-                CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+    
+        NavigationView{
+            VStack {
+                //Adds Title and images
+                Image("calculator").resizable().frame(width: 150, height: 150)
+                Text(" Welcome to Running Calculator!").bold()
                 
-            }
-            
-            Text("Your pace is:").bold()
-            Text(String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
-            Spacer()
-            Button("Calculate Pace!"){
-                calculatePace()
-            }
-            Spacer()
-            HStack{
-                Text(speedText).bold()
-                Image(imageName).resizable().frame(width: 150, height: 150)
+                // This HStack has the text fields where the user enters how far they ran and how long
+                VStack{
+                    CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
+                    CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
+                    CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
+                    CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
+                    
+                }
                 
-            }
-            VStack{
-                NavigationLink("Learn how to train!", destination: TrainingView())
+                Text("Your pace is:").bold()
+                Text(String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
                 Spacer()
-                NavigationLink("Get a training Plan!", destination: TrainingPlanView())
+                Button("Calculate Pace!"){
+                    calculatePace()
+                }
                 Spacer()
+                HStack{
+                    Text(speedText).bold()
+                    Image(imageName).resizable().frame(width: 150, height: 150)
+                    
+                }
+                VStack{
+                    NavigationLink("Learn how to train!", destination: TrainingView())
+                    Spacer()
+                    NavigationLink("Get a training Plan!", destination: TrainingPlanView())
+                    Spacer()
+                }
             }
-        }
+            }
+        
+        
     }
+    
+
+    
+    
+
+
+
+    
+    
+    
     func calculatePace() -> Double{
         totalMinutes = 0.0
         if let HoursRan = Double(enterHoursTextField){
