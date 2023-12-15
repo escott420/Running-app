@@ -8,6 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var enterNameTextField = ""
+    var body: some View {
+        NavigationView{
+            VStack{
+                CustomTextField(placeholder: "Enter hours ran", variable: $enterNameTextField)
+                NavigationLink("Go to calculator!", destination: HomeScreen())
+            }
+        }
+        
+    }
+    
+}
+    
+    
+
+
+struct HomeScreen: View{
     @State private var enterHoursTextField = ""
     @State private var enterMinutesTextField = ""
     @State private var enterSecondsTextField = ""
@@ -21,41 +38,41 @@ struct ContentView: View {
     @State private var finalMinutes = 0.0
     @State private var speedText = ""
     @State private var imageName = ""
-    var body: some View {
-        NavigationView{
-            VStack {
-                //Adds Title and images
-                Image("calculator").resizable().frame(width: 150, height: 150)
-                Text("Running Calculator!").bold()
+    var body: some View{
+        VStack {
+            //Adds Title and images
+            Image("calculator").resizable().frame(width: 150, height: 150)
+            Text(" Welcome to Running Calculator!").bold()
+            
+            // This HStack has the text fields where the user enters how far they ran and how long
+            VStack{
+                CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
+                CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
+                CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
+                CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
                 
-                // This HStack has the text fields where the user enters how far they ran and how long
-                VStack{
-                    CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
-                    CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
-                    CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
-                    CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
-                    
-                }
-                Text("Your pace is " + String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
-                Button("Calculate Pace!"){
-                    calculatePace()
-                }
+            }
+            
+            Text("Your pace is:").bold()
+            Text(String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
+            Spacer()
+            Button("Calculate Pace!"){
+                calculatePace()
+            }
+            Spacer()
+            HStack{
+                Text(speedText).bold()
+                Image(imageName).resizable().frame(width: 150, height: 150)
+                
+            }
+            VStack{
+                NavigationLink("Learn how to train!", destination: TrainingView())
                 Spacer()
-                HStack{
-                    Text(speedText).bold()
-                    Image(imageName).resizable().frame(width: 150, height: 150)
-                    
-                }
+                NavigationLink("Get a training Plan!", destination: TrainingPlanView())
                 Spacer()
-                VStack{
-                    NavigationLink("Learn how to train!", destination: TrainingView())
-                    Spacer()
-                    NavigationLink("Get a training Plan!", destination: TrainingPlanView())
-                }
             }
         }
     }
-    
     func calculatePace() -> Double{
         totalMinutes = 0.0
         if let HoursRan = Double(enterHoursTextField){
@@ -195,9 +212,11 @@ struct TrainingPlanView: View{
             }
         }
     }
-       
     }
 }
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
