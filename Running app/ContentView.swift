@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    //variables for text feilds and calculate function
     @State private var enterHoursTextField = ""
     @State private var enterMinutesTextField = ""
     @State private var enterSecondsTextField = ""
@@ -22,22 +23,19 @@ struct ContentView: View {
     @State private var speedText = ""
     @State private var imageName = ""
     var body: some View{
-    
         NavigationView{
             VStack {
                 //Adds Title and images
                 Image("calculator").resizable().frame(width: 150, height: 150)
                 Text(" Welcome to Running Calculator!").bold()
-                
                 // This HStack has the text fields where the user enters how far they ran and how long
                 VStack{
                     CustomTextField(placeholder: "Enter hours ran", variable: $enterHoursTextField)
                     CustomTextField(placeholder: "Enter minutes ran", variable: $enterMinutesTextField)
                     CustomTextField(placeholder: "Enter seconds ran", variable: $enterSecondsTextField)
                     CustomTextField(placeholder: "Enter distance ran", variable: $enterDistanceTextField)
-                    
                 }
-                
+                //displays the users pace based on the values entered
                 Text("Your pace is:").bold()
                 Text(String(format: "%.2f",  finalMinutes) + " minutes and " + String(format: "%.2f",  finalSeconds) + " seconds per mile" )
                 Spacer()
@@ -48,8 +46,8 @@ struct ContentView: View {
                 HStack{
                     Text(speedText).bold()
                     Image(imageName).resizable().frame(width: 150, height: 150)
-                    
                 }
+                //Navigation links to other views
                 VStack{
                     NavigationLink("Learn how to train!", destination: TrainingView())
                     Spacer()
@@ -58,19 +56,8 @@ struct ContentView: View {
                 }
             }
             }
-        
-        
     }
-    
-
-    
-    
-
-
-
-    
-    
-    
+  // Function to calculate the users pace
     func calculatePace() -> Double{
         totalMinutes = 0.0
         if let HoursRan = Double(enterHoursTextField){
@@ -84,12 +71,14 @@ struct ContentView: View {
                         {
                             totalMinutes += MinutesRan
                         }
+                        //Math to find pace
                         totalMinutes += secondsRan/60
                         tempPace = totalMinutes/distanceRan
                         temp = tempPace - Double(Int(tempPace))
                         paceSeconds = temp / (100/60)
                         finalMinutes = Double(Int(tempPace))
                         finalSeconds = paceSeconds * 100
+                        //gives an image based on how fast the user ran plus a text prompt
                         if (finalMinutes < 5)
                         {
                             speedText = "Wow thats fast!"
@@ -117,7 +106,7 @@ struct ContentView: View {
         return finalSeconds
     }
 }
-
+//New view that gives the user helpfull info on how to train
 struct TrainingView: View{
     var body: some View {
         ZStack{
@@ -136,9 +125,9 @@ struct TrainingView: View{
         }
     }
 }
-
+// new view that gives the user a training plan based on there experience
 struct TrainingPlanView: View{
-    
+    //Variables for the training for each day
     @State private var mondayText = ""
     @State private var tuesdayText = ""
     @State private var wednessdayText = ""
@@ -149,12 +138,12 @@ struct TrainingPlanView: View{
     @State private var weeklyMileage = 0
     var body: some View {
         ZStack{
-            
             Color.green
                 .ignoresSafeArea()
         VStack{
             Text("Select your  previous training experience:").bold()
             Spacer()
+            //different training plans based on the users experience
             VStack{
                 Button("Begginer runner"){
                     mondayText = "Easy run (2-3 miles)"
@@ -187,6 +176,7 @@ struct TrainingPlanView: View{
                     weeklyMileage = 67
                 }
                 Spacer()
+                //Prints out training plan
                 VStack{
                     Text("Monday:").bold()
                     Text(mondayText)
@@ -213,15 +203,11 @@ struct TrainingPlanView: View{
     }
 }
 
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-
 // custom text feild struct
 struct CustomTextField: View {
     let placeholder : String
