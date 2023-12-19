@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    //variables for text feilds and calculate function
+    //variables for text feild and calculate function
     @State private var enterHoursTextField = ""
     @State private var enterMinutesTextField = ""
     @State private var enterSecondsTextField = ""
@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var finalMinutes = 0.0
     @State private var speedText = ""
     @State private var imageName = ""
+    @State private var  temp2 = 0
     var body: some View{
         NavigationView{
             VStack {
